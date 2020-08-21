@@ -1,4 +1,4 @@
-##API GraphQL
+<h1>API GraphQL</h1>
 
 GraphQL é uma **Declarative Query Language**, uma especificação para **interações client/server**, independente de **data store** e de **plataforma**.
 
