@@ -16,7 +16,7 @@ Com o GraphQL, o usuário pode fazer uma única chamada para buscar todas as inf
 
 Uma consulta usando GraphQL é uma string enviada e interpretada pelo servidor, que após processar retorna o JSON no formato solicitado.
 
-###Princípios Básicos
+<h3>Princípios Básicos</h3>
 
 O GraphQL, de modo geral, possui três estruturas principais:
 
@@ -37,7 +37,7 @@ Para expormos estas estruturas através de uma API GraphQL, precisamos descrevê
 
 Para nosso exemplo, os types seriam definodos da seguinte forma:
 
-#### Example Type
+<h4> Example Type</h4>
 
 	type Pessoa {
 		  id: ID
@@ -63,7 +63,7 @@ Algo que seja definido como um ID, necessariamente não precisa ser um número. 
 
 Temos um schema com a definição dos types Pessoa e Cachorro, types estes que possuem `fields` – o equivalente aos `atributos`. Um schema define a estrutura, entre outras coisas, dos `object types`. Os types Pessoa e Cachorro são object types.
 
-####Utilização do GraphQL
+<h4>Utilização do GraphQL</h4>
 
 [![GraphQL Utilization](http://soaone.com.br/graphql/graphqlutilization.png "GraphQL Utilization")](http://soaone.com.br/graphql/graphqlutilization.png "GraphQL Utilization")
 
@@ -73,12 +73,12 @@ A implementação da API GraphQL é realizada No GraphQL-Server. Em tempo de exe
 * **Resolver**: especificar onde os dados serão obtidos.
 * **Producing the result**: tratar cada atributo de forma a produzir um payload que espelha a consulta (query) que foi realizada.
 
-####Nota
+<h4>Nota</h3>
 
 * O **request** sempre será feito na mesma URL e utilizando o mesmo Método HTTP (**POST**), independentemente de qual dado esteja sendo requisitado ou manipulado. Exemplo: POST: http://api.grupomult.com/graphql
 * O response sempre será um “**HTTP 200: OK**”, independentemente do resultado da requisição ter sido com sucesso ou com erro
 
-####Querys no GraphQL
+<h4>Querys no GraphQL</h4>
 
 As **queries** são utilizadas quando desejamos recuperar recursos do servidor GraphQL. Se trata de uma operação de consulta. Além disso, as queries são como types especiais para o GraphQL, já que elas definem **operações**.
 
@@ -88,7 +88,7 @@ As **Queries** são análogo a operações **GET** do Restful.
 
 Se quiséssemos que nossa API GraphQL retorne uma consulta dos donos e seus respectivos cachorros através do id do dono, teríamos algo similar ao trecho de schema abaixo:
 
-#####Query Exemple
+<h5>Query Exemple</h5>
 
 	type Query {
 	  dono(id: String): Pessoa
@@ -102,7 +102,7 @@ Podemos receber um parâmetro em nossa consulta: o id do dono a ser pesquisado. 
 
 Se fôssemos invocar uma consulta para nossa API querendo recuperar as informações do dono e seus respectivos cachorros com o id 1, poderíamos ter a consulta abaixo:
 
-####Example Request
+<h4>Example Request</h4>
 	query DonoPorId($id: String){
 		  dono(id: $id){
 			    id
@@ -126,7 +126,7 @@ O intuito dessa consulta é  recuperar o dono cujo id é 1, especificando os cam
 
 Como resposta teríamos:
 
-####Response Example
+<h4>Response Example</h4>
 
 	{
 	  "data": {
@@ -143,56 +143,56 @@ Como resposta teríamos:
 		  }
 	}
 
-###Querys Models
+<h3>Querys Models</h3>
 
-####Declarative query language
+<h4>Declarative query language</h3>
 O client declara os dados que precisa e a resposta é um espelho do que foi solicitado.
 
 [![GraphQL Utilization](http://soaone.com.br/graphql/declarative.png "Query Models")](http://soaone.com.br/graphql/declarative.png "GraphQL Utilization")
 
-####Permite múltiplas queries na mesma requisição
+<h4>Permite múltiplas queries na mesma requisição</h4>
 O GraphQL-Server executa as queries em paralelo para optimizar a requisição.
 O client declara os dados que precisa e a resposta é um espelho do que foi solicitado.
 
 [![GraphQL Utilization](http://soaone.com.br/graphql/multiplequery.png "Query Models")](http://soaone.com.br/graphql/multiplequery.png "GraphQL Utilization")
 
-####Merge da mesma instância de objeto
+<h4>Merge da mesma instância de objeto</h4>
 [![GraphQL Utilization](http://soaone.com.br/graphql/merge.png "Query Models")](http://soaone.com.br/graphql/merge.png "GraphQL Utilization")
 
-####Alias
+<h4>Alias</h4>
 Evita conflitos entre intâncias diferentes do mesmo objeto.
 
 [![GraphQL Utilization](http://soaone.com.br/graphql/alias.png "Query Models")](http://soaone.com.br/graphql/alias.png "GraphQL Utilization")
 
-####Objetos aninhados
+<h4>Objetos aninhados</h4>
 [![GraphQL Utilization](http://soaone.com.br/graphql/objetosaninhados.png "Query Models")](http://soaone.com.br/graphql/objetosaninhados.png "GraphQL Utilization")
 
-####Referências cíclicas
+<h4>Referências cíclicas</h4>
 [![GraphQL Utilization](http://soaone.com.br/graphql/cyclicreference.png "Query Models")](http://soaone.com.br/graphql/cyclicreference.png "GraphQL Utilization")
 
-####Argumentos
+<h4>Argumentos</h4>
 Cada Atributo e objeto aniuinhado pode ter seu prórpio conjunto de argumentos.
 
 [![GraphQL Utilization](http://soaone.com.br/graphql/arguments.png "Query Models")](http://soaone.com.br/graphql/arguments.png "GraphQL Utilization")
 
 [![GraphQL Utilization](http://soaone.com.br/graphql/arguments2.png "Query Models")](http://soaone.com.br/graphql/arguments2.png "GraphQL Utilization")
 
-####Paginação
+<h4>Paginação</h4>
 [![GraphQL Utilization](http://soaone.com.br/graphql/pagination.png "Query Models")](http://soaone.com.br/graphql/pagination.png "GraphQL Utilization")
 
-####Variáveis e Diretivas
+<h4>Variáveis e Diretivas</h4>
 [![GraphQL Utilization](http://soaone.com.br/graphql/varanddirectives.png "Query Models")](http://soaone.com.br/graphql/varanddirectives.png "GraphQL Utilization")
 
-####Fragmentos
+<h4>Fragmentos</h4>
 [![GraphQL Utilization](http://soaone.com.br/graphql/varanddirectives.png "Query Models")](http://soaone.com.br/graphql/varanddirectives.png "GraphQL Utilization")
 
-####União e Polimorfismo
+<h4>União e Polimorfismo</h4>
 
 Situações em que não se sabe o tipo de retorno, precisa de alguma maneira determinar como lidar com esses dados no cliente.
 
 [![GraphQL Utilization](http://soaone.com.br/graphql/polymorphism.png "Query Models")](http://soaone.com.br/graphql/polymorphism.png "GraphQL Utilization")
 
-####Mutações
+<h4>Mutações</h4>
 
 Análogo as operações **POST / PUT / DELETE** do Restful.
 
@@ -202,11 +202,11 @@ Caso a operação de mutação retorne um objeto, você pode solicitar atributos
 
 [![GraphQL Utilization](http://soaone.com.br/graphql/mutation.png "Query Models")](http://soaone.com.br/graphql/mutation.png "GraphQL Utilization")
 
-####Validações
+<h4>Validações</h4>
 
 [![GraphQL Utilization](http://soaone.com.br/graphql/validation.png "Query Models")](http://soaone.com.br/graphql/validation.png "GraphQL Utilization")
 
-###GrapphQL Resume
+<h3>GrapphQL Resume<h3>
 
 * Único endpoint
 * Query Language para API
@@ -216,7 +216,7 @@ Caso a operação de mutação retorne um objeto, você pode solicitar atributos
 * Evoluir a API sem necessidade de versionamento
 * Utilizar as próprias bases de dados e código
 
-###Pontos de Atenção
+<h3>Pontos de Atenção<h3>
 
 As operações não são claras como em REST (GET / POST / PUT / DELETE)
 Todo retorno é “HTTP `200` OK”
@@ -226,15 +226,15 @@ Efeito colateral de utilizar mais dados de entrada na chamada e uso do servidor 
 Não resolve sozinho os problemas (esforço) de design
 Dificuldade em fazer troubleshooting de problemas e dar suporte aos desenvolvedores de APPs
 
-###Ecossistema GraphQL
+<h3>Ecossistema GraphQL</h4>
 
-####GraphQL Clients
+<h4>GraphQL Clients</h4>
 * JavaScript – Relay, Apollo Client, Lokka
 * Swift / iOS – Apollo iOS
 * Java / Android – Apollo Android
 * C# / .NET – graphql-net-client
 
-####Server Libraries
+<h4>Server Libraries</h4>
 
 * JavaScript – GraphQL.js, express-graphql, graphql-server
 * Ruby – graphql-ruby
@@ -247,7 +247,7 @@ Dificuldade em fazer troubleshooting de problemas e dar suporte aos desenvolvedo
 * C# / .NET – graphql-dotnet, graphql-net
 * Elixir – absinthe, graphql-elixir
 
-#### IDE para Documentar e Explorar APIs GraphQL
+<h3>IDE para Documentar e Explorar APIs GraphQL<h3>
 
 * GraphiQL – https://github.com/graphql/graphiql
 
